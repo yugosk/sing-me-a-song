@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "npx dotenv-cli -e .env.test jest -i --coverage",
     "dev": "nodemon src/server.ts"
   },
   "keywords": [],
