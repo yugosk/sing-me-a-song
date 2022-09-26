@@ -126,11 +126,10 @@ describe("Get recommendations tests", () => {
 
     jest
       .spyOn(recommendationRepository, "findAll")
-      .mockResolvedValue([recommendations[0]]);
+      .mockResolvedValue([{ ...recommendations[0], id: 1, score: 11 }]);
 
     const result = await recommendationService.getRandom();
 
-    expect(result).toEqual(recommendations[0]);
     expect(result.score).toBeGreaterThan(10);
     expect(recommendationRepository.findAll).toBeCalled();
   });
@@ -141,7 +140,7 @@ describe("Get recommendations tests", () => {
     });
     jest
       .spyOn(recommendationRepository, "findAll")
-      .mockResolvedValue([recommendations[1]]);
+      .mockResolvedValue([{ ...recommendations[1], id: 1, score: 5 }]);
 
     await recommendationService.getRandom();
 
